@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darma Heights — Uttarakhand Tourism</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#1B2D1D;--pine2:#223624;--pine3:#2A4030;
+  --gold:#E8930A;--gold2:#F5A623;--gold3:#FFC654;
+  --sky:#7FBBD3;--mist:#A8BAC8;--snow:#F2EEE4;
+  --red:#C0392B;--green:#27AE60;
+  --bd:rgba(232,147,10,.2);
+  --fd:'Cormorant Garamond',serif;
+  --fb:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--pine);color:var(--snow);font-family:var(--fb);overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(27,45,29,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;gap:8px;}
+.logo{font-family:var(--fd);font-size:18px;color:var(--gold2);white-space:nowrap;cursor:pointer;flex-shrink:0;}
+.logo span{color:var(--snow);font-weight:400;}
+.nav-scroll{display:flex;gap:2px;overflow-x:auto;flex:1;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.nav-scroll::-webkit-scrollbar{display:none;}
+.nb{background:none;border:1px solid transparent;color:rgba(242,238,228,.5);padding:5px 10px;border-radius:6px;cursor:pointer;font-family:var(--fb);font-size:11.5px;white-space:nowrap;transition:all .18s;flex-shrink:0;}
+.nb:hover{color:var(--gold2);border-color:var(--bd);}
+.nb.on{background:var(--gold);color:var(--pine);font-weight:600;border-color:var(--gold);}
+.nb.adm{color:#ffb3a0;}
+.nb.adm.on{background:var(--red);color:#fff;border-color:var(--red);}
+
+/* PAGES */
+.page{display:none;min-height:100vh;padding-top:56px;}
+.page.on{display:block;animation:fadeUp .3s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.wrap{padding:28px 16px;max-width:1100px;margin:0 auto;}
+.sec-hd{margin-bottom:20px;}
+.sec-hd h2{font-family:var(--fd);font-size:28px;line-height:1.1;}
+.sec-hd p{color:var(--mist);font-size:13px;margin-top:4px;}
+.bar{width:34px;height:3px;background:var(--gold);border-radius:2px;margin-bottom:8px;}
+
+/* HERO */
+.hero{min-height:calc(100vh - 56px);background:radial-gradient(ellipse at 30% 50%,rgba(232,147,10,.07),transparent 60%),var(--pine);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 20px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E8930A' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:var(--pine);clip-path:polygon(0 100%,0 60%,5% 30%,12% 55%,20% 10%,28% 45%,35% 5%,43% 40%,51% 0%,59% 38%,67% 15%,75% 48%,82% 22%,90% 52%,97% 30%,100% 45%,100% 100%);opacity:.6;}
+.hero-pill{display:inline-block;background:rgba(232,147,10,.1);border:1px solid rgba(232,147,10,.3);color:var(--gold2);padding:5px 16px;border-radius:30px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;}
+.hero h1{font-family:var(--fd);font-size:clamp(32px,7vw,68px);line-height:1.05;margin-bottom:16px;}
+.hero h1 em{color:var(--gold2);font-style:italic;}
+.hero-sub{color:var(--mist);font-size:14.5px;max-width:480px;line-height:1.8;margin-bottom:30px;}
+.hbtns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.bp{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--pine);padding:12px 26px;border-radius:10px;border:none;cursor:pointer;font-family:var(--fb);font-weight:600;font-size:13px;transition:all .2s;box-shadow:0 4px 20px rgba(232,147,10,.25);}
+.bp:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,147,10,.35);}
+.bs{background:transparent;color:var(--snow);padding:12px 24px;border-radius:10px;border:1px solid rgba(242,238,228,.18);cursor:pointer;font-family:var(--fb);font-size:13px;transition:all .2s;}
+.bs:hover{border-color:var(--gold);color:var(--gold);}
+.hstats{display:flex;gap:32px;margin-top:52px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;}
+.hstat .n{font-family:var(--fd);font-size:28px;color:var(--gold2);}
+.hstat .l{font-size:11px;color:var(--mist);margin-top:2px;letter-spacing:.5px;}
+
+/* CARDS GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:14px;}
+.card{background:var(--pine2);border:1px solid var(--bd);border-radius:14px;overflow:hidden;transition:all .22s;cursor:pointer;}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.5);border-color:var(--gold);}
+
+/* PHOTO GALLERY ON CARD */
+.c-gallery{height:160px;position:relative;overflow:hidden;background:var(--pine3);}
+.c-gallery img{width:100%;height:100%;object-fit:cover;transition:transform .3s;}
+.card:hover .c-gallery img{transform:scale(1.05);}
+.c-gallery-empty{height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--mist);}
+.c-gallery-empty .eico{font-size:42px;opacity:.4;}
+.c-gallery-empty span{font-size:11px;opacity:.5;}
+.c-gallery-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:4px;}
+.c-gallery-dots span{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.4);transition:all .2s;}
+.c-gallery-dots span.on{background:#fff;width:14px;}
+.cbadge{position:absolute;top:10px;right:10px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bg{background:var(--green);color:#fff;}
+.bo{background:var(--gold);color:var(--pine);}
+.br{background:var(--red);color:#fff;}
+.cbody{padding:14px;}
+.cname{font-family:var(--fd);font-size:17px;margin-bottom:3px;}
+.csub{color:var(--mist);font-size:12px;margin-bottom:8px;}
+.ctags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:9px;}
+.ctag{background:rgba(232,147,10,.08);border:1px solid var(--bd);padding:2px 7px;border-radius:4px;font-size:10px;color:var(--mist);}
+.cprice{font-family:var(--fd);font-size:20px;color:var(--gold2);}
+.cprice span{font-family:var(--fb);font-size:11px;color:var(--mist);}
+
+/* LOCAL CONTACT STRIP */
+.lc-strip{background:rgba(127,187,211,.07);border-top:1px solid rgba(127,187,211,.18);padding:10px 14px;display:flex;align-items:center;gap:8px;}
+.lc-info{flex:1;min-width:0;}
+.lc-name{font-size:12px;color:var(--sky);font-weight:600;}
+.lc-role{font-size:10.5px;color:var(--mist);}
+.lc-num{font-family:monospace;font-size:13px;color:var(--sky);font-weight:700;}
+.lc-call{background:rgba(127,187,211,.14);border:1px solid rgba(127,187,211,.28);color:var(--sky);padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:all .2s;}
+.lc-call:hover{background:rgba(127,187,211,.26);}
+.cbtns{display:flex;gap:6px;padding:0 14px 14px;}
+.btn-bk{flex:1;padding:9px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;color:var(--pine);font-family:var(--fb);font-size:12px;font-weight:600;cursor:pointer;transition:opacity .2s;}
+.btn-bk:hover{opacity:.88;}
+
+/* PHOTO UPLOAD COMPONENT */
+.photo-upload-area{border:2px dashed rgba(232,147,10,.35);border-radius:10px;padding:20px;text-align:center;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;background:rgba(232,147,10,.03);}
+.photo-upload-area:hover{border-color:var(--gold);background:rgba(232,147,10,.07);}
+.photo-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.pua-ico{font-size:32px;margin-bottom:8px;}
+.pua-text{font-size:13px;color:var(--mist);}
+.pua-hint{font-size:11px;color:rgba(168,186,200,.5);margin-top:4px;}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:7px;margin-top:10px;}
+.photo-thumb{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:1;border:1px solid var(--bd);}
+.photo-thumb img{width:100%;height:100%;object-fit:cover;}
+.photo-thumb .del{position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:rgba(192,57,43,.85);color:#fff;border:none;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700;}
+.photo-thumb .main-badge{position:absolute;bottom:3px;left:3px;background:var(--gold);color:var(--pine);font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;}
+
+/* WEATHER */
+.wbox{background:var(--pine2);border:1px solid var(--bd);border-radius:13px;padding:18px;margin-bottom:16px;}
+.w-now{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;background:var(--pine3);border-radius:10px;padding:14px;margin-bottom:14px;}
+.w-ico{font-size:52px;}
+.w-temp{font-family:var(--fd);font-size:40px;color:var(--gold2);line-height:1;}
+.w-extras{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;}
+.we{font-size:11.5px;color:var(--mist);}
+.we b{color:var(--snow);}
+.w-forecast{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:6px;margin-bottom:12px;}
+.wfd{background:var(--pine3);border:1px solid var(--bd);border-radius:8px;padding:8px 5px;text-align:center;}
+.wday{font-size:9.5px;color:var(--mist);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;}
+.wico{font-size:22px;margin-bottom:3px;}
+.wtmp{font-family:var(--fd);font-size:14px;color:var(--gold2);}
+.wdsc{font-size:9.5px;color:var(--mist);margin-top:1px;}
+.cloth-box{background:linear-gradient(135deg,rgba(42,64,48,.95),rgba(34,54,36,.95));border:2px solid var(--gold);border-radius:12px;padding:16px;margin:14px 0;}
+.cloth-title{font-family:var(--fd);font-size:16px;color:var(--gold2);margin-bottom:8px;}
+.cloth-temp{display:inline-block;background:rgba(232,147,10,.14);border:1px solid rgba(232,147,10,.38);color:var(--gold2);padding:3px 11px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:9px;}
+.cloth-items{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:9px;}
+.cloth-item{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:var(--snow);padding:4px 11px;border-radius:20px;font-size:11.5px;}
+.cloth-note{font-size:12px;color:var(--mist);line-height:1.65;border-top:1px solid var(--bd);padding-top:9px;}
+.w-warn{background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.32);border-radius:8px;padding:10px 13px;font-size:12px;color:var(--mist);display:flex;gap:7px;margin-top:10px;}
+.date-sel{background:var(--pine2);border:1px solid var(--bd);border-radius:13px;padding:16px;margin-bottom:16px;}
+.date-sel h3{font-family:var(--fd);font-size:16px;color:var(--gold2);margin-bottom:12px;}
+.date-row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;}
+.fg label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:5px;font-weight:600;}
+.fg input,.fg select,.fg textarea{background:var(--pine3);border:1px solid var(--bd);color:var(--snow);padding:8px 11px;border-radius:7px;font-family:var(--fb);font-size:13px;outline:none;transition:border-color .2s;width:100%;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);}
+.fg select option{background:var(--pine2);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+
+/* EMERGENCY */
+.emg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:8px;}
+.ec{border-radius:10px;padding:13px;display:flex;gap:9px;align-items:center;transition:all .2s;text-decoration:none;}
+.ec:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.35);}
+.ec.red{background:rgba(192,57,43,.12);border:1.5px solid rgba(192,57,43,.38);}
+.ec.orange{background:rgba(232,147,10,.08);border:1.5px solid rgba(232,147,10,.3);}
+.ec.blue{background:rgba(127,187,211,.08);border:1.5px solid rgba(127,187,211,.25);}
+.ec.green{background:rgba(39,174,96,.08);border:1.5px solid rgba(39,174,96,.25);}
+.ec.purple{background:rgba(155,89,182,.08);border:1.5px solid rgba(155,89,182,.25);}
+.ec-ico{font-size:24px;flex-shrink:0;}
+.ec-name{font-size:11.5px;font-weight:600;margin-bottom:1px;}
+.ec.red .ec-name{color:#ff8a80;}.ec.orange .ec-name{color:var(--gold2);}.ec.blue .ec-name{color:var(--sky);}.ec.green .ec-name{color:#6be08a;}.ec.purple .ec-name{color:#c39bd3;}
+.ec-num{font-family:monospace;font-size:15px;font-weight:700;}
+.ec.red .ec-num{color:#ff8a80;}.ec.orange .ec-num{color:var(--gold2);}.ec.blue .ec-num{color:var(--sky);}.ec.green .ec-num{color:#6be08a;}.ec.purple .ec-num{color:#c39bd3;}
+.ec-hint{font-size:10px;color:var(--mist);margin-top:1px;}
+
+/* FLOOD */
+.fl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px;margin:14px 0;}
+.flc{background:var(--pine2);border:1px solid var(--bd);border-radius:9px;padding:12px;}
+.flm{font-family:var(--fd);font-size:14px;margin-bottom:3px;}
+.risk{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;margin-bottom:4px;}
+.rh{background:rgba(192,57,43,.18);color:#ff8a80;}
+.rm{background:rgba(232,147,10,.18);color:var(--gold2);}
+.rl{background:rgba(39,174,96,.14);color:#6be08a;}
+.fl-d{font-size:11px;color:var(--mist);line-height:1.5;}
+.tip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:8px;margin-top:12px;}
+.tip{background:var(--pine2);border:1px solid var(--bd);border-radius:8px;padding:11px;display:flex;gap:7px;font-size:12px;color:var(--mist);line-height:1.5;}
+
+/* LOCAL GUIDE */
+.lgtabs{display:flex;border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:18px;}
+.lgt{flex:1;padding:10px 6px;background:none;border:none;border-right:1px solid var(--bd);color:var(--mist);cursor:pointer;font-family:var(--fb);font-size:12.5px;transition:all .2s;text-align:center;}
+.lgt:last-child{border-right:none;}
+.lgt.on{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--pine);font-weight:600;}
+.lgp{display:none;}.lgp.on{display:block;animation:fadeUp .2s ease;}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:12px;}
+.fc{background:var(--pine2);border:1px solid var(--bd);border-radius:12px;overflow:hidden;transition:all .2s;}
+.fc:hover{border-color:var(--gold);transform:translateY(-2px);}
+.ftop{height:90px;display:flex;align-items:center;justify-content:center;font-size:38px;position:relative;}
+.ftop.c1{background:linear-gradient(135deg,#1a0e05,#2d1a00);}
+.ftop.c2{background:linear-gradient(135deg,#0d1a0d,#142612);}
+.ftop.c3{background:linear-gradient(135deg,#1a1505,#261e00);}
+.ftop.c4{background:linear-gradient(135deg,#0d0d1a,#141426);}
+.ftop.c5{background:linear-gradient(135deg,#1a0505,#260d0d);}
+.ftop.c6{background:linear-gradient(135deg,#0a1a15,#0d2618);}
+.fbdg{position:absolute;top:7px;right:7px;padding:2px 7px;border-radius:20px;font-size:9.5px;font-weight:700;}
+.fbdg.veg{background:rgba(39,174,96,.9);color:#fff;}
+.fbdg.sweet{background:rgba(232,147,10,.9);color:var(--pine);}
+.fbdg.drink{background:rgba(127,187,211,.9);color:var(--pine);}
+.fbody{padding:12px;}
+.fname{font-family:var(--fd);font-size:16px;margin-bottom:1px;}
+.fhindi{font-size:11px;color:var(--gold);font-style:italic;margin-bottom:5px;}
+.fdesc{font-size:11.5px;color:var(--mist);line-height:1.6;margin-bottom:4px;}
+.fwhere{font-size:10.5px;color:var(--mist);}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;}
+.pcard{background:var(--pine2);border:1px solid var(--bd);border-radius:12px;padding:15px;transition:all .2s;}
+.pcard:hover{border-color:var(--gold);transform:translateY(-2px);}
+
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);z-index:2000;align-items:center;justify-content:center;padding:12px;}
+.overlay.on{display:flex;animation:fadeUp .2s ease;}
+.modal{background:var(--pine2);border:1px solid var(--bd);border-radius:16px;padding:22px;max-width:540px;width:100%;max-height:92vh;overflow-y:auto;}
+.mhd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+.mhd h3{font-family:var(--fd);font-size:20px;line-height:1.2;}
+.mclose{background:none;border:none;color:var(--mist);font-size:20px;cursor:pointer;flex-shrink:0;margin-left:8px;}
+.mclose:hover{color:var(--snow);}
+.mfg{margin-bottom:11px;}
+.mfg label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:5px;font-weight:600;}
+.mfg input,.mfg select,.mfg textarea{width:100%;background:var(--pine3);border:1px solid var(--bd);color:var(--snow);padding:9px 11px;border-radius:7px;font-family:var(--fb);font-size:13px;outline:none;transition:border-color .2s;}
+.mfg input:focus,.mfg select:focus,.mfg textarea:focus{border-color:var(--gold);}
+.mfg select option{background:var(--pine2);}
+.mfg textarea{resize:vertical;min-height:58px;}
+.mfrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.msum{background:var(--pine3);border:1px solid var(--bd);border-radius:8px;padding:12px;margin:12px 0;}
+.srow{display:flex;justify-content:space-between;padding:3px 0;font-size:12px;color:var(--mist);}
+.srow .v{color:var(--snow);}
+.srow.tot{border-top:1px solid var(--bd);margin-top:5px;padding-top:8px;font-weight:600;font-size:14px;}
+.srow.tot .v{color:var(--gold2);}
+.ptabs{display:flex;gap:5px;margin-bottom:10px;}
+.ptab{flex:1;padding:7px;border:1px solid var(--bd);border-radius:6px;background:none;color:var(--mist);cursor:pointer;font-family:var(--fb);font-size:12px;text-align:center;transition:all .2s;}
+.ptab.on{border-color:var(--gold);color:var(--gold2);background:rgba(232,147,10,.07);}
+.ok-screen{text-align:center;padding:22px 10px;}
+.ok-ico{font-size:48px;margin-bottom:10px;}
+.ok-screen h3{font-family:var(--fd);font-size:22px;margin-bottom:6px;}
+.ok-screen p{color:var(--mist);margin-bottom:14px;font-size:13px;}
+.bref{background:var(--pine3);border:1px solid var(--bd);border-radius:7px;padding:8px 16px;display:inline-block;font-family:monospace;font-size:16px;color:var(--gold2);letter-spacing:3px;}
+
+/* ADMIN PANEL */
+.adm-wrap{padding:20px 16px;max-width:1080px;margin:0 auto;}
+.adm-hd{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+.adm-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:18px;}
+.at{padding:7px 13px;border:1px solid var(--bd);border-radius:7px;background:none;color:var(--mist);cursor:pointer;font-family:var(--fb);font-size:12px;transition:all .2s;}
+.at.on{background:var(--gold);color:var(--pine);font-weight:600;border-color:var(--gold);}
+.at:hover:not(.on){border-color:var(--gold);color:var(--gold2);}
+.ap{display:none;}.ap.on{display:block;animation:fadeUp .2s ease;}
+.alist{display:flex;flex-direction:column;gap:8px;}
+.aitem{background:var(--pine2);border:1px solid var(--bd);border-radius:10px;padding:13px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+.ai-left{display:flex;gap:10px;align-items:center;flex:1;min-width:0;}
+.ai-thumb{width:48px;height:48px;border-radius:8px;object-fit:cover;border:1px solid var(--bd);flex-shrink:0;}
+.ai-thumb-empty{width:48px;height:48px;border-radius:8px;background:var(--pine3);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.ai-info{flex:1;min-width:0;}
+.ai-name{font-family:var(--fd);font-size:14.5px;margin-bottom:1px;}
+.ai-sub{font-size:11px;color:var(--mist);}
+.ai-sub b{color:var(--sky);}
+.ai-acts{display:flex;gap:5px;flex-shrink:0;}
+.btn-ed{padding:6px 11px;border-radius:6px;border:1px solid var(--bd);background:rgba(232,147,10,.06);color:var(--gold2);cursor:pointer;font-size:11.5px;transition:all .2s;font-family:var(--fb);}
+.btn-ed:hover{background:rgba(232,147,10,.15);}
+.btn-dl{padding:6px 9px;border-radius:6px;border:1px solid rgba(192,57,43,.3);background:rgba(192,57,43,.06);color:#ff9a80;cursor:pointer;font-size:11.5px;transition:all .2s;font-family:var(--fb);}
+.btn-dl:hover{background:rgba(192,57,43,.16);}
+
+/* ROUTE MAP */
+.route-stops{display:flex;flex-direction:column;gap:0;}
+.rs{display:flex;gap:14px;align-items:flex-start;}
+.rs-line{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+.rs-dot{width:36px;height:36px;border-radius:50%;border:2px solid var(--gold);background:var(--pine);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--gold);}
+.rs-bar{width:2px;height:32px;background:linear-gradient(180deg,var(--gold),rgba(232,147,10,.2));margin:3px 0;}
+.rs-body{padding-bottom:18px;flex:1;}
+.rs-name{font-size:14px;font-weight:600;margin-bottom:2px;}
+.rs-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px;}
+.rs-m{font-size:11px;color:var(--sky);}
+.rs-note{font-size:12px;color:var(--mist);line-height:1.55;}
+
+/* RETURN ROUTES */
+.rr-card{background:var(--pine2);border-radius:13px;overflow:hidden;margin-bottom:14px;}
+.rr-hd{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.rr-title{font-family:var(--fd);font-size:18px;}
+.rr-badges{display:flex;gap:6px;flex-wrap:wrap;}
+.rbadge{padding:3px 11px;border-radius:20px;font-size:11.5px;font-weight:600;}
+.rr-body{padding:0 18px 16px;}
+.rr-stops{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin:10px 0;}
+.rr-stop{font-size:12px;color:var(--snow);background:var(--pine3);padding:3px 9px;border-radius:5px;}
+.rr-arr{color:var(--gold);font-size:12px;}
+
+/* DASHBOARD */
+.metrics{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:18px;}
+.mc{background:var(--pine2);border:1px solid var(--bd);border-radius:10px;padding:14px;}
+.mc .mico{font-size:20px;margin-bottom:6px;}
+.mc .mval{font-family:var(--fd);font-size:24px;color:var(--gold2);}
+.mc .mlbl{font-size:11px;color:var(--mist);margin-top:2px;}
+.mc .mch{font-size:10px;color:var(--green);margin-top:2px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:16px;right:16px;background:var(--pine2);border:1px solid var(--gold);border-radius:9px;padding:10px 15px;font-size:12.5px;z-index:9999;transform:translateY(50px);opacity:0;transition:all .3s;max-width:260px;pointer-events:none;}
+.toast.show{transform:none;opacity:1;}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .mfrow{grid-template-columns:1fr;}
+  .frow{grid-template-columns:1fr;}
+  .hero h1{font-size:32px;}
+  .metrics{grid-template-columns:1fr 1fr;}
+  .rr-hd{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo" onclick="goPage('home')">🏔️ Darma <span>Heights</span></div>
+  <div class="nav-scroll">
+    <button class="nb on" onclick="goPage('home')">🏠 Home</button>
+    <button class="nb" onclick="goPage('hotels')">🏨 Hotels</button>
+    <button class="nb" onclick="goPage('tours')">🗺️ Tours</button>
+    <button class="nb" onclick="goPage('attractions')">⛰️ Yatra</button>
+    <button class="nb" onclick="goPage('localguide')">🍛 Local</button>
+    <button class="nb" onclick="goPage('weather')">🌤️ Mausam</button>
+    <button class="nb" onclick="goPage('emergency')">🚨 Emergency</button>
+    <button class="nb" onclick="goPage('routes')">🗺️ Routes</button>
+    <button class="nb adm" onclick="goPage('admin')">⚙️ Admin</button>
+  </div>
+</nav>
+<div class="toast" id="toast"></div>
+
+<!-- HOME -->
+<div class="page on" id="page-home">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-pill">🏔️ Darma Valley — Uttarakhand</div>
+    <h1>Pahaadon Ki <em>Godh Mein</em><br>Aapka Swagat</h1>
+    <p class="hero-sub">Tanakpur se Adi Kailash tak — hotels, tours, mausam aur emergency seva sab ek jagah.</p>
+    <div class="hbtns">
+      <button class="bp" onclick="goPage('hotels')">🏨 Hotels Dekhein</button>
+      <button class="bs" onclick="goPage('tours')">🗺️ Tours Book Karein</button>
+      <button class="bs" onclick="goPage('emergency')">🚨 Emergency</button>
+    </div>
+    <div class="hstats">
+      <div class="hstat"><div class="n" id="statH">4</div><div class="l">Hotels</div></div>
+      <div class="hstat"><div class="n" id="statT">3</div><div class="l">Tour Packages</div></div>
+      <div class="hstat"><div class="n">18+</div><div class="l">Attractions</div></div>
+      <div class="hstat"><div class="n">4.9★</div><div class="l">Rating</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOTELS -->
+<div class="page" id="page-hotels">
+  <div class="wrap">
+    <div class="sec-hd"><div class="bar"></div><h2>Hamare Hotels</h2><p>Panchachuli region ke best stay options — har hotel mein local contact available</p></div>
+    <div class="grid" id="hotelsGrid"></div>
+  </div>
+</div>
+
+<!-- TOURS -->
+<div class="page" id="page-tours">
+  <div class="wrap">
+    <div class="sec-hd"><div class="bar"></div><h2>Tour Packages</h2><p>Tanakpur se Adi Kailash, Om Parvat aur Panchachuli Base Camp tak</p></div>
+    <div class="grid" id="toursGrid"></div>
+  </div>
+</div>
+
+<!-- ATTRACTIONS -->
+<div class="page" id="page-attractions">
+  <div class="wrap">
+    <div class="sec-hd"><div class="bar"></div><h2>Nearby Attractions</h2><p>Ghumne ki sundar jagahein</p></div>
+    <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:16px;" id="attrFilters">
+      <button class="ptab on" onclick="filterAttr('all',this)">🌐 Sabhi</button>
+      <button class="ptab" onclick="filterAttr('spiritual',this)">🕉️ Spiritual</button>
+      <button class="ptab" onclick="filterAttr('trek',this)">🥾 Trek</button>
+      <button class="ptab" onclick="filterAttr('nature',this)">🌿 Nature</button>
+      <button class="ptab" onclick="filterAttr('heritage',this)">🏛️ Heritage</button>
+    </div>
+    <div class="grid" id="attrGrid"></div>
+  </div>
+</div>
+
+<!-- LOCAL GUIDE -->
+<div class="page" id="page-localguide">
+  <div class="wrap">
+    <div class="sec-hd"><div class="bar"></div><h2>Local Guide</h2><p>Khana aur kharidari — Darma Valley ki pehchaan</p></div>
+    <div class="lgtabs">
+      <button class="lgt on" onclick="lgTab('foods',this)">🍛 Local Foods</button>
+      <button class="lgt" onclick="lgTab('products',this)">🛍️ Local Products</button>
+    </div>
+    <div class="lgp on" id="panel-foods"><div class="fgrid" id="foodsGrid"></div></div>
+    <div class="lgp" id="panel-products"><div class="pgrid" id="productsGrid"></div></div>
+  </div>
+</div>
+
+<!-- WEATHER -->
+<div class="page" id="page-weather">
+  <div class="wrap">
+    <div class="sec-hd"><div class="bar"></div><h2>Mausam Jankari</h2><p>Travel dates ke hisab se mausam aur kapdon ki salah</p></div>
+    <div class="date-sel">
+      <h3>📅 Travel Dates Chunein</h3>
+      <div class="date-row">
+        <div class="fg"><label>Check-in</label><input type="date" id="wDateIn" onchange="updateWeather()"></div>
+        <div class="fg"><label>Check-out</label><input type="date" id="wDateOut" onchange="updateWeather()"></div>
+        <button class="bp" onclick="updateWeather()">🌤️ Dekhein</button>
+      </div>
+    </div>
+    <div class="wbox">
+      <div style="font-family:var(--fd);font-size:18px;margin-bottom:12px;">🌡️ Abhi Ka Mausam — Darma Valley</div>
+      <div class="w-now">
+        <div class="w-ico" id="wNowIco">⛅</div>
+        <div>
+          <div class="w-temp" id="wNowTemp">8°C</div>
+          <div style="font-size:12px;color:var(--mist);">Darma Valley, Pithoragarh (alt. ~3,100m)</div>
+          <div style="font-size:13px;" id="wNowDesc">Partly Cloudy</div>
+          <div class="w-extras">
+            <div class="we">💧 <b id="wHum">72%</b></div>
+            <div class="we">🌬️ <b id="wWind">18km/h</b></div>
+            <div class="we">👁️ <b id="wVis">8km</b></div>
+            <div class="we">🧭 Feels <b id="wFeel">4°C</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="w-forecast" id="wForecast"></div>
+      <div id="wWarnBox" style="display:none;" class="w-warn"><span>⚠️</span><span id="wWarnText"></span></div>
+    </div>
+    <div class="cloth-box" id="clothBox">
+      <div class="cloth-title">👕 Kapdon Ki Salah</div>
+      <div class="cloth-temp" id="clothTemp">8°C</div>
+      <div class="cloth-items" id="clothItems"></div>
+      <div class="cloth-note" id="clothNote"></div>
+    </div>
+  </div>
+</div>
+
+<!-- EMERGENCY -->
+<div class="page" id="page-emergency">
+  <div class="wrap">
+    <div class="sec-hd"><div class="bar"></div><h2>Emergency Numbers</h2><p>Ek tap mein call karein — pahaadon mein zaroori contacts</p></div>
+    <div style="background:rgba(192,57,43,.1);border:1.5px solid rgba(192,57,43,.38);border-radius:10px;padding:13px 16px;margin-bottom:20px;font-size:12.5px;color:var(--mist);display:flex;gap:9px;">
+      <span style="font-size:22px;flex-shrink:0;">🚨</span>
+      <div><b style="color:#ff8a80;">Emergency mein:</b> Pehle SDRF/Police call karein. Network nahi ho to high point se try karein. Hotel local contact zaroor save karein.</div>
+    </div>
+    <div style="font-family:var(--fd);font-size:18px;margin:18px 0 10px;">🆘 National Numbers</div>
+    <div class="emg-grid" id="nationalEmg"></div>
+    <div style="font-family:var(--fd);font-size:18px;margin:18px 0 10px;">🏔️ Local — Pithoragarh & Darma Valley</div>
+    <div class="emg-grid" id="localEmg"></div>
+    <div style="font-family:var(--fd);font-size:18px;margin:18px 0 10px;">🏔️ Dharchula — Police, Hospital & SDM</div>
+    <div class="emg-grid" id="dharchulaEmg"></div>
+    <div style="font-family:var(--fd);font-size:18px;margin:18px 0 10px;">👤 Hotel Local Contacts</div>
+    <div class="emg-grid" id="hotelContacts"></div>
+    <div style="font-family:var(--fd);font-size:18px;margin:18px 0 10px;">🌊 Flood Risk Calendar</div>
+    <div class="fl-grid" id="floodGrid"></div>
+    <div class="tip-grid" id="tipsGrid"></div>
+  </div>
+</div>
+
+<!-- ROUTES -->
+<div class="page" id="page-routes">
+  <div class="wrap">
+    <div class="sec-hd"><div class="bar"></div><h2>Route Guide</h2><p>Delhi → Adi Kailash aur Dharchula se wapsi ke alternative routes</p></div>
+    <div class="lgtabs">
+      <button class="lgt on" onclick="lgTab('route-main',this)">🛣️ Main Route</button>
+      <button class="lgt" onclick="lgTab('route-return',this)">🔄 Wapsi Routes</button>
+    </div>
+    <div class="lgp on" id="panel-route-main">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:9px;margin-bottom:20px;">
+        <div style="background:var(--pine2);border:1px solid var(--bd);border-radius:10px;padding:12px;text-align:center;"><div style="font-size:22px;mb:5px">🛣️</div><div style="font-family:var(--fd);font-size:18px;color:var(--gold2);">~700km</div><div style="font-size:11px;color:var(--mist);">Total Distance</div></div>
+        <div style="background:var(--pine2);border:1px solid var(--bd);border-radius:10px;padding:12px;text-align:center;"><div style="font-size:22px;">⏱️</div><div style="font-family:var(--fd);font-size:18px;color:var(--gold2);">6-7 Days</div><div style="font-size:11px;color:var(--mist);">Recommended</div></div>
+        <div style="background:var(--pine2);border:1px solid var(--bd);border-radius:10px;padding:12px;text-align:center;"><div style="font-size:22px;">🏔️</div><div style="font-family:var(--fd);font-size:18px;color:var(--gold2);">6,191m</div><div style="font-size:11px;color:var(--mist);">Max Altitude</div></div>
+        <div style="background:var(--pine2);border:1px solid var(--bd);border-radius:10px;padding:12px;text-align:center;"><div style="font-size:22px;">🛂</div><div style="font-family:var(--fd);font-size:18px;color:var(--gold2);">ILP</div><div style="font-size:11px;color:var(--mist);">Permit Zaroori</div></div>
+      </div>
+      <div class="route-stops" id="mainRouteStops"></div>
+    </div>
+    <div class="lgp" id="panel-route-return">
+      <div style="background:rgba(192,57,43,.1);border:1.5px solid rgba(192,57,43,.35);border-radius:10px;padding:13px 16px;margin-bottom:16px;font-size:12.5px;color:var(--mist);display:flex;gap:9px;">
+        <span style="font-size:22px;">🚨</span>
+        <div>Nikalne se 1 ghante pehle <b style="color:var(--snow);">BRO Helpline 05964-225007</b> ya <b style="color:var(--snow);">Dharchula Police 05964-241100</b> se road status confirm zaroor karein.</div>
+      </div>
+      <div id="returnRouteCards"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div class="page" id="page-admin">
+  <div class="adm-wrap">
+    <div class="adm-hd">
+      <div><div style="font-family:var(--fd);font-size:26px;">⚙️ Admin Panel</div><div style="color:var(--mist);font-size:12.5px;margin-top:2px;">Sab kuch yahan se edit karein — photos bhi upload karein</div></div>
+      <button class="bp" onclick="showAddItem()">＋ Naya Item</button>
+    </div>
+    <div style="background:rgba(39,174,96,.07);border:1px solid rgba(39,174,96,.22);border-radius:9px;padding:11px 15px;margin-bottom:16px;font-size:12.5px;color:var(--mist);">
+      💡 <b style="color:#6be08a;">Photo Upload:</b> Kisi bhi hotel ya tour ka edit (✏️) button dabaaiye → Photos section mein apni photos add karein. Changes automatically save ho jaate hain!
+    </div>
+    <div class="adm-tabs">
+      <button class="at on" onclick="admTab('hotels',this)">🏨 Hotels</button>
+      <button class="at" onclick="admTab('tours',this)">🗺️ Tours</button>
+      <button class="at" onclick="admTab('attractions',this)">⛰️ Attractions</button>
+      <button class="at" onclick="admTab('foods',this)">🍛 Foods</button>
+      <button class="at" onclick="admTab('products',this)">🛍️ Products</button>
+      <button class="at" onclick="admTab('emergency',this)">🚨 Emergency</button>
+    </div>
+    <div class="ap on" id="ap-hotels"><div class="alist" id="al-hotels"></div></div>
+    <div class="ap" id="ap-tours"><div class="alist" id="al-tours"></div></div>
+    <div class="ap" id="ap-attractions"><div class="alist" id="al-attractions"></div></div>
+    <div class="ap" id="ap-foods"><div class="alist" id="al-foods"></div></div>
+    <div class="ap" id="ap-products"><div class="alist" id="al-products"></div></div>
+    <div class="ap" id="ap-emergency"><div class="alist" id="al-emergency"></div></div>
+  </div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="overlay" id="bookModal">
+  <div class="modal">
+    <div id="bookStep1">
+      <div class="mhd"><h3 id="bTitle">Booking</h3><button class="mclose" onclick="closeModal('bookModal')">✕</button></div>
+      <div class="mfg"><label>Pura Naam</label><input type="text" id="bName" placeholder="Aapka naam"></div>
+      <div class="mfrow"><div class="mfg"><label>Email</label><input type="email" id="bEmail" placeholder="email@gmail.com"></div><div class="mfg"><label>Mobile</label><input type="tel" id="bPhone" placeholder="+91 98765..."></div></div>
+      <div class="mfrow"><div class="mfg"><label id="d1lbl">Check-in</label><input type="date" id="bD1" onchange="calcSum();onBookDateChange()"></div><div class="mfg"><label id="d2lbl">Check-out</label><input type="date" id="bD2" onchange="calcSum()"></div></div>
+      <div class="mfrow"><div class="mfg"><label id="selLbl">Room Type</label><select id="bSel" onchange="calcSum()"><option>Standard Room</option></select></div><div class="mfg"><label>Guests</label><select id="bGuests"><option>1 Adult</option><option>2 Adults</option><option>2+1 Child</option><option>Group 5+</option></select></div></div>
+      <div class="mfg"><label>Special Request</label><textarea id="bReq" placeholder="Koi khaas zaroorat..."></textarea></div>
+      <div class="cloth-box" id="bookClothBox" style="display:none;margin:10px 0;">
+        <div class="cloth-title">👕 Kapdon Ki Salah</div>
+        <div id="bookClothContent"></div>
+      </div>
+      <div class="msum">
+        <div class="srow"><span>Item</span><span class="v" id="sItem">—</span></div>
+        <div class="srow"><span>Dates</span><span class="v" id="sDates">—</span></div>
+        <div class="srow"><span>Nights</span><span class="v" id="sNights">—</span></div>
+        <div class="srow"><span>Base</span><span class="v" id="sBase">—</span></div>
+        <div class="srow"><span>GST 5%</span><span class="v" id="sTax">—</span></div>
+        <div class="srow tot"><span>Total</span><span class="v" id="sTotal">—</span></div>
+      </div>
+      <div class="mfg"><label>Payment</label>
+        <div class="ptabs"><button class="ptab on" onclick="selPay(this,'card')">💳 Card</button><button class="ptab" onclick="selPay(this,'upi')">📱 UPI</button><button class="ptab" onclick="selPay(this,'nb')">🏦 NetBanking</button></div>
+        <div id="pay-card"><div class="mfg"><label>Card No.</label><input type="text" placeholder="1234 5678 9012 3456" maxlength="19"></div><div class="mfrow"><div class="mfg"><label>Expiry</label><input type="text" placeholder="MM/YY"></div><div class="mfg"><label>CVV</label><input type="text" placeholder="•••" maxlength="3"></div></div></div>
+        <div id="pay-upi" style="display:none;"><div class="mfg"><label>UPI ID</label><input type="text" placeholder="name@upi"></div></div>
+        <div id="pay-nb" style="display:none;"><div class="mfg"><label>Bank</label><select><option>SBI</option><option>HDFC</option><option>ICICI</option><option>Axis</option><option>PNB</option></select></div></div>
+      </div>
+      <button class="bp" style="width:100%;" onclick="confirmBook()">✅ Confirm Booking</button>
+    </div>
+    <div id="bookStep2" style="display:none;">
+      <div class="ok-screen">
+        <div class="ok-ico">🎉</div>
+        <h3>Booking Confirmed!</h3>
+        <p>Email par confirmation bheja gaya. Hotel local contact save karein.</p>
+        <div class="bref" id="bRef">—</div>
+        <div id="bookLocalContact" style="margin-top:16px;background:rgba(127,187,211,.08);border:1px solid rgba(127,187,211,.2);border-radius:9px;padding:13px;text-align:left;"></div>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px;">
+          <button class="bp" onclick="closeModal('bookModal')">Done</button>
+          <button class="bs" onclick="toast('📥 Ticket download ho raha hai!')">📥 Download</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="overlay" id="editModal">
+  <div class="modal">
+    <div class="mhd"><h3 id="editTitle">Edit</h3><button class="mclose" onclick="closeModal('editModal')">✕</button></div>
+    <div id="editForm"></div>
+    <div style="display:flex;gap:8px;margin-top:14px;">
+      <button class="bp" style="flex:1;" onclick="saveEdit()">💾 Save</button>
+      <button class="bs" onclick="closeModal('editModal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD ITEM MODAL -->
+<div class="overlay" id="addModal">
+  <div class="modal">
+    <div class="mhd"><h3>➕ Naya Item Add Karein</h3><button class="mclose" onclick="closeModal('addModal')">✕</button></div>
+    <div class="mfg"><label>Kis Category Mein?</label>
+      <select id="addCat" onchange="renderAddForm()">
+        <option value="hotels">🏨 Hotel</option>
+        <option value="tours">🗺️ Tour</option>
+        <option value="attractions">⛰️ Attraction</option>
+        <option value="foods">🍛 Food</option>
+        <option value="products">🛍️ Product</option>
+        <option value="emergency">🚨 Emergency Number</option>
+      </select>
+    </div>
+    <div id="addForm"></div>
+    <div style="display:flex;gap:8px;margin-top:14px;">
+      <button class="bp" style="flex:1;" onclick="saveNewItem()">➕ Add Karein</button>
+      <button class="bs" onclick="closeModal('addModal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════
+// PHOTO STORAGE — localStorage mein save hoti hain
+// ══════════════════════════════════════════
+const photoStore = {
+  save(key, photos) {
+    try { localStorage.setItem('photos_' + key, JSON.stringify(photos)); } catch(e) {}
+  },
+  load(key) {
+    try { return JSON.parse(localStorage.getItem('photos_' + key) || '[]'); } catch(e) { return []; }
+  }
+};
+
+// ══════════════════════════════════════════
+// DATA — localStorage se load/save
+// ══════════════════════════════════════════
+const STORAGE_KEY = 'darma_data_v3';
+
+const defaultData = {
+  hotels: [
+    {id:1,icon:'🏔️',name:'Darma Heights Base Camp Resort',loc:'Near Munsiyari, Pithoragarh',stars:'★★★★★',badge:'Available',badgeCls:'bg',tags:['Mountain View','Bonfire','Guided Treks'],price:'6500',desc:'Panchachuli peaks ke bilkul neeche flagship property.',rooms:'Standard – ₹4,500|Deluxe – ₹6,500|Suite – ₹9,800|Cottage – ₹12,000',lc_name:'Mohan Singh Bisht',lc_role:'Property Manager',lc_phone:'9412345678'},
+    {id:2,icon:'🏛️',name:'Heritage Hotel Pithoragarh',loc:'Pithoragarh Town',stars:'★★★★☆',badge:'Few Rooms',badgeCls:'bo',tags:['Heritage','City View','Restaurant'],price:'4200',desc:'Pithoragarh ki historic property — Kumaoni culture ka adiham.',rooms:'Standard – ₹2,800|Deluxe – ₹4,200|Suite – ₹6,500',lc_name:'Ramesh Joshi',lc_role:'Front Desk',lc_phone:'9456781234'},
+    {id:3,icon:'🌲',name:'Forest Retreat Lohaghat',loc:'Lohaghat, Champawat',stars:'★★★★☆',badge:'Available',badgeCls:'bg',tags:['Forest','Bird Watching','Yoga'],price:'3800',desc:'Shaal aur banj ke jangal mein chhupa paradise.',rooms:'Forest Room – ₹3,800|Deluxe Cottage – ₹5,200|Suite – ₹7,500',lc_name:'Geeta Devi',lc_role:'Caretaker',lc_phone:'9897654321'},
+    {id:4,icon:'🕌',name:'Champawat Inn',loc:'Champawat Town',stars:'★★★☆☆',badge:'Available',badgeCls:'bg',tags:['Temple Nearby','Budget','Parking'],price:'2900',desc:'Champawat ke dil mein, Baleshwar Temple ke paas.',rooms:'Standard – ₹2,900|Deluxe – ₹3,800',lc_name:'Suresh Pandey',lc_role:'Hotel Owner',lc_phone:'9634521876'}
+  ],
+  tours: [
+    {id:1,icon:'🕉️',name:'Adi Kailash & Om Parvat Yatra',type:'SPIRITUAL',dur:'7 Days/6 Nights',desc:'Adi Kailash aur Om Parvat ki pavitra yatra.',stops:'Tanakpur|Pithoragarh|Dharchula|Narayan Ashram|Om Parvat',includes:'Transport|Guide|Meals|Hotels|Permits',price:'42000',packages:'Deluxe – ₹42,000|Premium – ₹55,000|Group – ₹35,000'},
+    {id:2,icon:'⛺',name:'Panchachuli Base Camp Trek',type:'TREKKING',dur:'6 Days/5 Nights',desc:'Panchachuli peaks ke base camp tak legendary trek.',stops:'Tanakpur|Champawat|Lohaghat|Munsiyari|Panchachuli BC',includes:'Transport|Trek Guide|Meals|Camps|First Aid',price:'28000',packages:'Standard – ₹28,000|Premium – ₹38,000|Group – ₹22,000'},
+    {id:3,icon:'🏔️',name:'Kumaon Complete Tour',type:'COMBO',dur:'5 Days/4 Nights',desc:'Champawat, Lohaghat, Pithoragarh ka poora darshan.',stops:'Tanakpur|Champawat|Lohaghat|Pithoragarh|Chandak',includes:'AC Transport|Guide|B+D|2 Hotels|Sightseeing',price:'18500',packages:'Budget – ₹18,500|Comfort – ₹24,000|Luxury – ₹32,000'}
+  ],
+  attractions: [
+    {id:1,icon:'🕉️',name:'Adi Kailash',desc:'Chhota Kailash — Shiva ka pavitra dham.',dist:'220km from Pithoragarh',cat:'spiritual'},
+    {id:2,icon:'🌑',name:'Om Parvat',desc:'Prakritik himapat se OM ki aakruti.',dist:'250km from Pithoragarh',cat:'spiritual'},
+    {id:3,icon:'🛕',name:'Narayan Ashram',desc:'1938 mein sthaapit divya ashram.',dist:'160km from Pithoragarh',cat:'spiritual'},
+    {id:4,icon:'⛰️',name:'Panchachuli Base Camp',desc:'5 chotiyon ka samooh — trekkers ka bucket-list.',dist:'Near Munsiyari',cat:'trek'},
+    {id:5,icon:'🏔️',name:'Milam Glacier',desc:'Kumaon ka purana majestic glacier trek.',dist:'75km from Munsiyari',cat:'trek'},
+    {id:6,icon:'🌿',name:'Khaliya Top',desc:'180° Panchachuli panorama.',dist:'12km from Munsiyari',cat:'trek'},
+    {id:7,icon:'🏛️',name:'Baleshwar Temple',desc:'1000 saal purana Chalukya style mandir.',dist:'Champawat Town',cat:'heritage'},
+    {id:8,icon:'🌊',name:'Sharda River',desc:'Nepal se aati nadi — fishing aur nature walks.',dist:'Near Tanakpur',cat:'nature'},
+    {id:9,icon:'💧',name:'Birthi Falls',desc:'62 feet oonchi waterfall — must see.',dist:'35km from Munsiyari',cat:'nature'},
+    {id:10,icon:'🦅',name:'Askot Wildlife Sanctuary',desc:'Snow Leopard + 250 birds.',dist:'54km from Pithoragarh',cat:'nature'}
+  ],
+  foods: [
+    {id:1,icon:'🫓',cls:'c1',badge:'veg',name:'Mandua Ki Roti',hindi:'मंडुआ की रोटी',desc:'Kale gehun ki roti — calcium aur iron se bhari.',where:'Har ghar mein milti hai'},
+    {id:2,icon:'🍚',cls:'c2',badge:'veg',name:'Jhangora Khichdi',hindi:'झंगोरा खिचड़ी',desc:'Barnyard millet ki traditional pahadi dish.',where:'Local dhabas mein'},
+    {id:3,icon:'🍯',cls:'c3',badge:'sweet',name:'Bal Mithai',hindi:'बाल मिठाई',desc:'Kumaon ki famous mithai — khoya se bani.',where:'Pithoragarh ke halwai shops'},
+    {id:4,icon:'🌿',cls:'c4',badge:'veg',name:'Kafuli',hindi:'कफुली',desc:'Palak aur methipatti ki iron-rich sabzi.',where:'Darma Valley hotels mein'},
+    {id:5,icon:'🍲',cls:'c5',badge:'veg',name:'Aloo Ke Gutke',hindi:'आलू के गुटके',desc:'Pahadi masalon mein bane crispy aloo.',where:'Roadside dhabas mein'},
+    {id:6,icon:'☕',cls:'c6',badge:'drink',name:'Buransh Ka Sharbat',hindi:'बुरांश का शरबत',desc:'Rhododendron phoolon ka health sharbat.',where:'March-April mein fresh milta hai'}
+  ],
+  products: [
+    {id:1,ico:'🧣',name:'Ringaal Basket',desc:'Bambu jaisi ringaal ghaas se bune huye basket.',price:'₹300–₹1,500',where:'Munsiyari market',tags:['Handicraft','Eco-friendly']},
+    {id:2,ico:'🌿',name:'Jadi Booti Pack',desc:'Himalayan aushadhiyan — Kutki, Atees, Brahmi.',price:'₹200–₹800',where:'Pithoragarh market',tags:['Medicinal','Organic']},
+    {id:3,ico:'🧶',name:'Pahadi Woollen Shawl',desc:'Chyangra bakri ke oon se buna shawl.',price:'₹800–₹3,000',where:'Champawat cloth shops',tags:['Warm','Handwoven']},
+    {id:4,ico:'🍯',name:'Wild Honey',desc:'Jungle beehives se direct — adulteration zero.',price:'₹400–₹900',where:'Munsiyari farmers',tags:['Pure','Organic']},
+    {id:5,ico:'🌰',name:'Chilgoza',desc:'Himalayan pine seeds — nutritious aur tasty.',price:'₹600–₹1,200',where:'Dharchula market',tags:['Premium','Dry Fruit']},
+    {id:6,ico:'🎨',name:'Aipan Art',desc:'Kumaon ki traditional ritual art.',price:'₹150–₹500',where:'Pithoragarh art shops',tags:['Art','Cultural']}
+  ],
+  emergency: [
+    {id:1,type:'national',cls:'red',ico:'🚨',name:'National Emergency',num:'112',hint:'Police, Ambulance, Fire'},
+    {id:2,type:'national',cls:'blue',ico:'🏥',name:'Ambulance',num:'108',hint:'Medical emergency'},
+    {id:3,type:'national',cls:'red',ico:'🚒',name:'Fire Brigade',num:'101',hint:'Aag lagne par'},
+    {id:4,type:'national',cls:'orange',ico:'🌊',name:'SDRF Helpline',num:'9557444486',hint:'State Disaster Response'},
+    {id:5,type:'national',cls:'green',ico:'🏔️',name:'NDRF',num:'011-24363260',hint:'National Disaster Response'},
+    {id:6,type:'local',cls:'orange',ico:'👮',name:'Pithoragarh Police',num:'05964-225100',hint:'District Police HQ'},
+    {id:7,type:'local',cls:'blue',ico:'🏥',name:'District Hospital',num:'05964-225642',hint:'Pithoragarh hospital'},
+    {id:8,type:'local',cls:'green',ico:'🚁',name:'Air Ambulance',num:'9149700300',hint:'Helicopter rescue'},
+    {id:9,type:'local',cls:'orange',ico:'🛣️',name:'BRO Helpline',num:'05964-225007',hint:'Road blockage info'},
+    {id:10,type:'dharchula',cls:'red',ico:'👮',name:'Dharchula Police',num:'05964-241100',hint:'Dharchula Thana 24x7'},
+    {id:11,type:'dharchula',cls:'blue',ico:'🏥',name:'Dharchula Hospital',num:'05964-241124',hint:'CHC Dharchula'},
+    {id:12,type:'dharchula',cls:'purple',ico:'🏛️',name:'Dharchula SDM',num:'05964-241200',hint:'Sub-Divisional Magistrate'}
+  ]
+};
+
+// Load or use default
+let data;
+try {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  data = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(defaultData));
+} catch(e) {
+  data = JSON.parse(JSON.stringify(defaultData));
+}
+
+function saveData() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+// ══════════════════════════════════════════
+// PHOTO HELPERS
+// ══════════════════════════════════════════
+function readFileAsDataURL(file) {
+  return new Promise((res, rej) => {
+    if(file.size > 3 * 1024 * 1024) { rej(new Error('File 3MB se badi hai')); return; }
+    const r = new FileReader();
+    r.onload = e => res(e.target.result);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+}
+
+async function handlePhotoUpload(files, key, container) {
+  let photos = photoStore.load(key);
+  for(const file of Array.from(files)) {
+    if(!file.type.startsWith('image/')) continue;
+    try {
+      const dataUrl = await readFileAsDataURL(file);
+      photos.push({ url: dataUrl, name: file.name });
+      if(photos.length > 8) photos = photos.slice(-8); // max 8
+    } catch(e) { toast('⚠️ ' + e.message); }
+  }
+  photoStore.save(key, photos);
+  renderPhotoGrid(key, container);
+  renderHotels(); renderTours();
+  toast('✅ ' + files.length + ' photo(s) upload ho gayi!');
+}
+
+function renderPhotoGrid(key, container) {
+  const photos = photoStore.load(key);
+  container.innerHTML = photos.map((p, i) => `
+    <div class="photo-thumb">
+      <img src="${p.url}" alt="photo ${i+1}">
+      ${i===0 ? '<div class="main-badge">Main</div>' : ''}
+      <button class="del" onclick="deletePhoto('${key}',${i},this)">✕</button>
+    </div>`).join('');
+}
+
+function deletePhoto(key, idx, btn) {
+  let photos = photoStore.load(key);
+  photos.splice(idx, 1);
+  photoStore.save(key, photos);
+  const container = btn.closest('.photo-grid');
+  renderPhotoGrid(key, container);
+  renderHotels(); renderTours();
+  toast('🗑️ Photo delete ho gayi');
+}
+
+function getMainPhoto(key) {
+  const photos = photoStore.load(key);
+  return photos.length > 0 ? photos[0].url : null;
+}
+
+// ══════════════════════════════════════════
+// RENDER FUNCTIONS
+// ══════════════════════════════════════════
+function renderHotels() {
+  document.getElementById('hotelsGrid').innerHTML = data.hotels.map(h => {
+    const photoKey = 'hotel_' + h.id;
+    const photos = photoStore.load(photoKey);
+    const mainPhoto = photos[0];
+    return `
+    <div class="card">
+      <div class="c-gallery">
+        ${mainPhoto
+          ? `<img src="${mainPhoto.url}" alt="${h.name}" onclick="openGallery('hotel_${h.id}')">`
+          : `<div class="c-gallery-empty"><div class="eico">🏔️</div><span>Photo nahi hai</span></div>`
+        }
+        ${photos.length > 1 ? `<div class="c-gallery-dots">${photos.map((_,i)=>`<span class="${i===0?'on':''}"></span>`).join('')}</div>` : ''}
+        <span class="cbadge ${h.badgeCls}">${h.badge}</span>
+      </div>
+      <div class="cbody">
+        <div class="cname">${h.name}</div>
+        <div class="csub">📍 ${h.loc} — ${h.stars}</div>
+        <div class="ctags">${h.tags.map(t=>`<span class="ctag">${t}</span>`).join('')}</div>
+        <div style="font-size:12px;color:var(--mist);margin-bottom:8px;line-height:1.55;">${h.desc}</div>
+        <div class="cprice">₹${parseInt(h.price).toLocaleString('en-IN')}<span>/night se</span></div>
+      </div>
+      <div class="lc-strip">
+        <div style="font-size:18px;">👤</div>
+        <div class="lc-info"><div class="lc-name">${h.lc_name}</div><div class="lc-role">${h.lc_role}</div></div>
+        <div style="text-align:right;"><div class="lc-num">${h.lc_phone}</div><a href="tel:${h.lc_phone}" class="lc-call">📞 Call</a></div>
+      </div>
+      <div class="cbtns"><button class="btn-bk" onclick="openBooking('hotel',${h.id})">📅 Book Now</button></div>
+    </div>`;
+  }).join('');
+}
+
+function renderTours() {
+  document.getElementById('toursGrid').innerHTML = data.tours.map(t => {
+    const photoKey = 'tour_' + t.id;
+    const photos = photoStore.load(photoKey);
+    const mainPhoto = photos[0];
+    return `
+    <div class="card">
+      <div class="c-gallery">
+        ${mainPhoto
+          ? `<img src="${mainPhoto.url}" alt="${t.name}">`
+          : `<div class="c-gallery-empty"><div class="eico">${t.icon}</div><span>Photo nahi hai</span></div>`
+        }
+        <span class="cbadge bo">${t.type}</span>
+      </div>
+      <div class="cbody">
+        <div class="cname">${t.name}</div>
+        <div class="csub">⏱ ${t.dur}</div>
+        <div style="font-size:12px;color:var(--mist);margin-bottom:8px;line-height:1.55;">${t.desc}</div>
+        <div class="ctags">${t.stops.split('|').map(s=>`<span class="ctag">📍${s}</span>`).join('')}</div>
+        <div style="margin:8px 0;">${t.includes.split('|').map(i=>`<div style="font-size:11px;color:var(--mist);display:flex;align-items:center;gap:4px;margin-bottom:2px;"><span style="color:var(--green);font-weight:700;">✓</span>${i}</div>`).join('')}</div>
+        <div class="cprice">₹${parseInt(t.price).toLocaleString('en-IN')}<span>/person se</span></div>
+      </div>
+      <div class="cbtns"><button class="btn-bk" onclick="openBooking('tour',${t.id})">📅 Book Now</button></div>
+    </div>`;
+  }).join('');
+}
+
+function renderAttrList(list) {
+  document.getElementById('attrGrid').innerHTML = list.map(a => `
+    <div class="card">
+      <div class="c-gallery"><div class="c-gallery-empty"><div class="eico">${a.icon}</div></div></div>
+      <div class="cbody">
+        <div class="cname">${a.name}</div>
+        <div class="csub">📍 ${a.dist}</div>
+        <div style="font-size:12px;color:var(--mist);line-height:1.6;">${a.desc}</div>
+        <div style="margin-top:8px;"><span class="ctag">${a.cat}</span></div>
+      </div>
+    </div>`).join('');
+}
+
+function filterAttr(cat, btn) {
+  document.querySelectorAll('#attrFilters .ptab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderAttrList(cat==='all' ? data.attractions : data.attractions.filter(a=>a.cat===cat));
+}
+
+function renderFoods() {
+  document.getElementById('foodsGrid').innerHTML = data.foods.map(f => `
+    <div class="fc">
+      <div class="ftop ${f.cls}">${f.icon}<span class="fbdg ${f.badge}">${f.badge==='veg'?'VEG':f.badge==='sweet'?'SWEET':'DRINK'}</span></div>
+      <div class="fbody"><div class="fname">${f.name}</div><div class="fhindi">${f.hindi}</div><div class="fdesc">${f.desc}</div><div class="fwhere">📍 ${f.where}</div></div>
+    </div>`).join('');
+}
+
+function renderProducts() {
+  document.getElementById('productsGrid').innerHTML = data.products.map(p => `
+    <div class="pcard">
+      <div style="font-size:34px;margin-bottom:8px;">${p.ico}</div>
+      <div style="font-family:var(--fd);font-size:16px;margin-bottom:4px;">${p.name}</div>
+      <div style="font-size:12px;color:var(--mist);line-height:1.6;margin-bottom:6px;">${p.desc}</div>
+      <div style="font-size:12px;color:var(--gold2);font-weight:600;margin-bottom:3px;">💰 ${p.price}</div>
+      <div style="font-size:11px;color:var(--mist);">📍 ${p.where}</div>
+      <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:7px;">${p.tags.map(t=>`<span style="background:rgba(127,187,211,.1);border:1px solid rgba(127,187,211,.2);color:var(--sky);padding:2px 7px;border-radius:4px;font-size:10px;">${t}</span>`).join('')}</div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════
+// EMERGENCY
+// ══════════════════════════════════════════
+function renderEmergency() {
+  const nat = data.emergency.filter(e=>e.type==='national');
+  const loc = data.emergency.filter(e=>e.type==='local');
+  const dha = data.emergency.filter(e=>e.type==='dharchula');
+  const ec = e => `<a href="tel:${e.num}" class="ec ${e.cls}"><div class="ec-ico">${e.ico}</div><div><div class="ec-name">${e.name}</div><div class="ec-num">${e.num}</div><div class="ec-hint">${e.hint}</div></div></a>`;
+  document.getElementById('nationalEmg').innerHTML = nat.map(ec).join('');
+  document.getElementById('localEmg').innerHTML = loc.map(ec).join('');
+  document.getElementById('dharchulaEmg').innerHTML = dha.map(ec).join('');
+  document.getElementById('hotelContacts').innerHTML = data.hotels.map(h=>`<a href="tel:${h.lc_phone}" class="ec blue"><div class="ec-ico">👤</div><div><div class="ec-name">${h.lc_name} — ${h.name.split(' ').slice(0,2).join(' ')}</div><div class="ec-num">${h.lc_phone}</div><div class="ec-hint">${h.lc_role}</div></div></a>`).join('');
+  const months=[{m:'Jan–Feb',r:'rl',d:'Snowfall. Road band ho sakte hain.'},{m:'Mar–May',r:'rl',d:'Best season. Koi risk nahi.'},{m:'June',r:'rm',d:'Monsoon shuru. Alert raho.'},{m:'July–Aug',r:'rh',d:'Heavy rain. Landslide risk MAX.'},{m:'Sept',r:'rm',d:'Baarish kam par risk baki.'},{m:'Oct–Nov',r:'rl',d:'Best trekking season.'},{m:'December',r:'rl',d:'Thand. Snowfall shuru.'}];
+  document.getElementById('floodGrid').innerHTML = months.map(f=>`<div class="flc"><div class="flm">${f.m}</div><div class="risk ${f.r}">${f.r==='rh'?'HIGH':f.r==='rm'?'MEDIUM':'LOW'}</div><div class="fl-d">${f.d}</div></div>`).join('');
+  document.getElementById('tipsGrid').innerHTML = [
+    {i:'📱',t:'BSNL SIM sabse zyada kaam aata hai. Pehle activate karein.'},
+    {i:'🔋',t:'Power bank zaroor lein — pahaadon mein charging problem.'},
+    {i:'🗺️',t:'Offline maps download karein pehle se.'},
+    {i:'💊',t:'Basic first aid + altitude sickness dawaa zaroor rakhein.'},
+    {i:'📞',t:'BRO: 05964-225007 — road status ke liye.'},
+    {i:'🌧️',t:'Monsoon mein Dharchula ke aage travel se pehle check karein.'}
+  ].map(t=>`<div class="tip"><span style="font-size:16px;flex-shrink:0;">${t.i}</span>${t.t}</div>`).join('');
+}
+
+// ══════════════════════════════════════════
+// ROUTES
+// ══════════════════════════════════════════
+const routeStops = [
+  {n:1,ico:'🏙️',name:'Delhi',prev:'—',total:'0 km',time:'Start',alt:'216m',note:'NH-9 via Moradabad-Bareilly. Subah 5 baje niklen.'},
+  {n:2,ico:'🌊',name:'Tanakpur',prev:'290 km',total:'290 km',time:'7-8 hrs',alt:'259m',note:'Purnagiri Temple. Petrol, food, SIM check karein.'},
+  {n:3,ico:'🏛️',name:'Champawat',prev:'60 km',total:'350 km',time:'2.5 hrs',alt:'1,615m',note:'Baleshwar Temple. Darma Heights Champawat Inn.'},
+  {n:4,ico:'🌲',name:'Lohaghat',prev:'15 km',total:'365 km',time:'30 min',alt:'1,779m',note:'Abbott Mount, Mayawati Ashram. Forest Retreat yahan.'},
+  {n:5,ico:'🏔️',name:'Pithoragarh',prev:'60 km',total:'425 km',time:'2.5 hrs',alt:'1,814m',note:'Inner Line Permit yahan banwayen. Heritage Hotel.'},
+  {n:6,ico:'🏠',name:'Dharchula',prev:'90 km',total:'515 km',time:'3.5 hrs',alt:'915m',note:'⚠️ ILP check. Nepal border. Police: 241100, Hospital: 241124'},
+  {n:7,ico:'🛕',name:'Narayan Ashram',prev:'53 km',total:'568 km',time:'3 hrs',alt:'2,734m',note:'1938 sthaapit ashram. ☎ +91 94274 90810'},
+  {n:8,ico:'⛺',name:'Panchachuli Base Camp',prev:'~40 km',total:'~608 km',time:'2.5 hrs+trek',alt:'4,260m',note:'Dugtu village se 2-3 km trek. Darma Heights Resort!'},
+  {n:9,ico:'🕉️',name:'Adi Kailash',prev:'~80 km',total:'~688 km',time:'3 hrs',alt:'6,191m',note:'Shiva ka dham. Subah 6 baje best. No network.'},
+  {n:10,ico:'🌑',name:'Om Parvat',prev:'~15 km',total:'~703 km',time:'30 min',alt:'6,191m',note:'Prakritik OM ki aakruti. Sacred.'}
+];
+
+function renderRoutes() {
+  document.getElementById('mainRouteStops').innerHTML = routeStops.map((s,i) => `
+    <div class="rs">
+      <div class="rs-line">
+        <div class="rs-dot">${s.ico}</div>
+        ${i<routeStops.length-1?'<div class="rs-bar"></div>':''}
+      </div>
+      <div class="rs-body">
+        <div class="rs-name">${s.name}</div>
+        <div class="rs-meta"><span class="rs-m">📏 ${s.prev}</span><span class="rs-m">⏱ ${s.time}</span><span class="rs-m">🏔️ ${s.alt}</span><span class="rs-m">Total: ${s.total}</span></div>
+        <div class="rs-note">${s.note}</div>
+      </div>
+    </div>`).join('');
+
+  const rr = [
+    {id:'A',color:'rgba(39,174,96,.35)',label:'🟢 Route A — Main Highway via Tanakpur',sub:'Dharchula → Askot → Pithoragarh → Champawat → Tanakpur',dist:'~243 km',time:'9-10 hrs',dest:'Tanakpur → Delhi',best:'Normal din mein, road clear ho tab.',stops:['Dharchula','Askot (54km|2hrs)','Pithoragarh (+54km|2hrs)','Champawat (+75km|3hrs)','Tanakpur (+60km|2.5hrs)']},
+    {id:'B',color:'rgba(232,147,10,.35)',label:'🟡 Route B — Berinag → Bageshwar → Haldwani',sub:'Dharchula → Berinag → Bageshwar → Almora → Haldwani',dist:'~330 km',time:'12-13 hrs',dest:'Haldwani → Delhi',best:'NH-9 band ho to yeh lein.',stops:['Dharchula','Berinag (90km|3.5hrs)','Bageshwar (+60km|2.5hrs)','Almora (+90km|3hrs)','Haldwani (+90km|3hrs)']},
+    {id:'C',color:'rgba(127,187,211,.35)',label:'🔵 Route C — Pithoragarh → Champawat → Flexible',sub:'Pithoragarh ke baad decide karein — Tanakpur ya Haldwani',dist:'~303 km',time:'~11 hrs',dest:'Haldwani ya Tanakpur',best:'Jab flexibility chahiye.',stops:['Dharchula','Pithoragarh (108km|4hrs)','Champawat (+75km|3hrs)','🔀 Junction: Tanakpur ya Haldwani']}
+  ];
+  document.getElementById('returnRouteCards').innerHTML = rr.map(r => `
+    <div class="rr-card" style="border:1.5px solid ${r.color};">
+      <div class="rr-hd">
+        <div><div class="rr-title">${r.label}</div><div style="font-size:12px;color:var(--mist);">📍 ${r.sub}</div></div>
+        <div class="rr-badges">
+          <span class="rbadge" style="background:rgba(232,147,10,.12);color:var(--gold2);">📏 ${r.dist}</span>
+          <span class="rbadge" style="background:rgba(127,187,211,.12);color:var(--sky);">⏱ ${r.time}</span>
+          <span class="rbadge" style="background:rgba(39,174,96,.12);color:#6be08a;">🏁 ${r.dest}</span>
+        </div>
+      </div>
+      <div class="rr-body">
+        <div style="font-size:12.5px;color:var(--mist);margin-bottom:10px;"><b style="color:var(--snow);">Kab use karein:</b> ${r.best}</div>
+        <div class="rr-stops">${r.stops.map((s,i)=>`<span class="rr-stop">${s}</span>${i<r.stops.length-1?'<span class="rr-arr">→</span>':''}`).join('')}</div>
+      </div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════
+// WEATHER
+// ══════════════════════════════════════════
+const wm = {1:{icon:'❄️',temp:'-2',desc:'Bahut Thand — Barfbaari'},2:{icon:'❄️',temp:'1',desc:'Thand — Snowfall possible'},3:{icon:'🌤️',temp:'8',desc:'Thandi — Suhana shuru'},4:{icon:'⛅',temp:'13',desc:'Acha mausam'},5:{icon:'☀️',temp:'17',desc:'Trek season shuru'},6:{icon:'🌧️',temp:'15',desc:'Monsoon — Baarish',warn:'Landslide risk. Extra caution.'},7:{icon:'⛈️',temp:'14',desc:'Heavy Monsoon',warn:'July mein trekking avoid karein.'},8:{icon:'🌦️',temp:'13',desc:'Monsoon jaari',warn:'Flood risk high.'},9:{icon:'⛅',temp:'12',desc:'Monsoon end'},10:{icon:'☀️',temp:'10',desc:'Best trek season'},11:{icon:'🌤️',temp:'4',desc:'Thandi badh rahi hai'},12:{icon:'❄️',temp:'-1',desc:'Sardi — Snowfall'}};
+const ca = {
+  cold2:{r:'Below 0°C',items:['🧥 Heavy Jacket','🧤 Gloves','🧣 Muffler','🥾 Snow Boots','🧢 Woollen Cap','🧦 Thick Socks','🩲 Thermal'],note:'Waterproof jacket zaroori. Wet kapde turant badlein.'},
+  cold:{r:'0–8°C',items:['🧥 Woollen Jacket','🧤 Gloves','🧣 Scarf','🥾 Trek Boots','🧢 Warm Cap','🧦 Woollen Socks'],note:'Layering system use karein. Raat ko aur thand hoti hai.'},
+  mild:{r:'8–15°C',items:['🧥 Light Jacket','🧣 Light Scarf','🥾 Boots','👕 Full Sleeve'],note:'Subah-shaam thandi. Ek extra jacket zaroor rakhein.'},
+  warm:{r:'15–22°C',items:['👕 T-shirt','🩳 Light Pants','🥾 Walking Shoes','🕶️ Sunglasses'],note:'Dhoop mein sunscreen lagaein. Shaam ko thandi aa jaati hai.'},
+  hot:{r:'22°C+',items:['👕 Cotton','🩳 Shorts','🕶️ Sunglasses','🧴 Sunscreen','💧 Water Bottle'],note:'Pahaadon mein 22°C+ nadir hai. Light sweater sath rakhein.'}
+};
+function getCA(t){const n=parseInt(t);return n<0?ca.cold2:n<8?ca.cold:n<15?ca.mild:n<22?ca.warm:ca.hot;}
+
+function updateWeather() {
+  const d1=document.getElementById('wDateIn').value;
+  const t=d1?new Date(d1):new Date();
+  const m=t.getMonth()+1;
+  const w=wm[m];
+  document.getElementById('wNowIco').textContent=w.icon;
+  document.getElementById('wNowTemp').textContent=w.temp+'°C';
+  document.getElementById('wNowDesc').textContent=w.desc;
+  document.getElementById('wHum').textContent=(60+m*2)+'%';
+  document.getElementById('wWind').textContent=(10+m)+'km/h';
+  document.getElementById('wVis').textContent=(m>=6&&m<=9)?'4km':'10km';
+  document.getElementById('wFeel').textContent=(parseInt(w.temp)-4)+'°C';
+  const wb=document.getElementById('wWarnBox');
+  if(w.warn){wb.style.display='flex';document.getElementById('wWarnText').textContent=w.warn;}
+  else wb.style.display='none';
+  const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const now=new Date();
+  document.getElementById('wForecast').innerHTML=Array.from({length:7},(_,i)=>{
+    const d=new Date(now);d.setDate(d.getDate()+i);
+    const mm=d.getMonth()+1;const ww=wm[mm];
+    const tv=parseInt(ww.temp)+Math.floor(Math.random()*4-2);
+    return `<div class="wfd"><div class="wday">${i===0?'Aaj':days[d.getDay()]}</div><div class="wico">${ww.icon}</div><div class="wtmp">${tv}°C</div><div class="wdsc">${ww.desc.split('—')[0].trim()}</div></div>`;
+  }).join('');
+  const adv=getCA(w.temp);
+  const cb=document.getElementById('clothBox');
+  cb.innerHTML=`<div class="cloth-title">👕 Kapdon Ki Salah — ${d1||'Aaj ke liye'}</div><div class="cloth-temp">${adv.r}</div><div class="cloth-items">${adv.items.map(i=>`<span class="cloth-item">${i}</span>`).join('')}</div><div class="cloth-note">${adv.note}</div>`;
+}
+
+function onBookDateChange() {
+  const d1=document.getElementById('bD1').value;
+  if(!d1)return;
+  const m=new Date(d1).getMonth()+1;const w=wm[m];const adv=getCA(w.temp);
+  const box=document.getElementById('bookClothBox');
+  box.style.display='block';
+  document.getElementById('bookClothContent').innerHTML=`<div class="cloth-temp">${adv.r}</div><div class="cloth-items">${adv.items.map(i=>`<span class="cloth-item">${i}</span>`).join('')}</div><div class="cloth-note">${adv.note}${w.warn?`<br><b style="color:#ff8a80;">⚠️ ${w.warn}</b>`:''}</div>`;
+}
+
+// ══════════════════════════════════════════
+// ADMIN PANEL
+// ══════════════════════════════════════════
+function renderAdmin(type) {
+  const lists = {
+    hotels:{data:data.hotels,sub:h=>`${h.loc} | ₹${h.price}/night | 👤 ${h.lc_name} (${h.lc_phone})`},
+    tours:{data:data.tours,sub:t=>`${t.dur} | ₹${t.price}/person`},
+    attractions:{data:data.attractions,sub:a=>`${a.dist} | ${a.cat}`},
+    foods:{data:data.foods,sub:f=>f.hindi},
+    products:{data:data.products,sub:p=>p.price},
+    emergency:{data:data.emergency,sub:e=>`${e.num} | ${e.type}`}
+  };
+  const m=lists[type];
+  const photoKey=type==='hotels'?'hotel_':type==='tours'?'tour_':null;
+  document.getElementById('al-'+type).innerHTML = m.data.map(item => {
+    const pk = photoKey?(photoKey+item.id):null;
+    const photo = pk?getMainPhoto(pk):null;
+    return `
+    <div class="aitem">
+      <div class="ai-left">
+        ${photo
+          ? `<img src="${photo}" class="ai-thumb" alt="thumb">`
+          : `<div class="ai-thumb-empty">${item.icon||item.ico||'📋'}</div>`
+        }
+        <div class="ai-info">
+          <div class="ai-name">${item.name}</div>
+          <div class="ai-sub">${m.sub(item)}${pk?` | <b>📷 ${photoStore.load(pk).length} photos</b>`:''}</div>
+        </div>
+      </div>
+      <div class="ai-acts">
+        <button class="btn-ed" onclick="openEdit('${type}',${item.id})">✏️ Edit</button>
+        <button class="btn-dl" onclick="deleteItem('${type}',${item.id})">🗑️</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function admTab(type, btn) {
+  document.querySelectorAll('.at').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  document.querySelectorAll('.ap').forEach(p=>p.classList.remove('on'));
+  document.getElementById('ap-'+type).classList.add('on');
+  renderAdmin(type);
+}
+
+// ══════════════════════════════════════════
+// EDIT MODAL — with photo upload
+// ══════════════════════════════════════════
+let currentEdit = {type:null,id:null};
+
+function openEdit(type, id) {
+  currentEdit = {type, id};
+  const item = data[type].find(x=>x.id===id);
+  if(!item) return;
+  document.getElementById('editTitle').textContent = '✏️ Edit — ' + item.name;
+  const photoKey = (type==='hotels'?'hotel_':type==='tours'?'tour_':null);
+  const hasPhoto = !!photoKey;
+  let photoSection = '';
+  if(hasPhoto) {
+    const pk = photoKey + id;
+    photoSection = `
+      <div style="background:var(--pine3);border:1px solid var(--bd);border-radius:10px;padding:14px;margin-bottom:12px;">
+        <div style="font-family:var(--fd);font-size:15px;color:var(--gold2);margin-bottom:10px;">📷 Photos Upload Karein</div>
+        <div class="photo-upload-area" onclick="document.getElementById('photoInput_${pk}').click()">
+          <input type="file" id="photoInput_${pk}" accept="image/*" multiple style="display:none;" onchange="handlePhotoUpload(this.files,'${pk}',document.getElementById('pgrid_${pk}'))">
+          <div class="pua-ico">📸</div>
+          <div class="pua-text">Tap karein — Hotel ya View ki Photos Chunein</div>
+          <div class="pua-hint">JPG, PNG • Max 3MB per photo • Max 8 photos</div>
+        </div>
+        <div class="photo-grid" id="pgrid_${pk}"></div>
+      </div>`;
+    setTimeout(() => {
+      const grid = document.getElementById('pgrid_'+pk);
+      if(grid) renderPhotoGrid(pk, grid);
+    }, 100);
+  }
+
+  let fields = '';
+  if(type==='hotels') {
+    fields = `
+      ${photoSection}
+      <div class="mfg"><label>Hotel Ka Naam</label><input id="ef_name" value="${item.name}"></div>
+      <div class="mfrow"><div class="mfg"><label>Location</label><input id="ef_loc" value="${item.loc}"></div><div class="mfg"><label>Price ₹/night</label><input id="ef_price" value="${item.price}" type="number"></div></div>
+      <div class="mfrow"><div class="mfg"><label>Stars</label><select id="ef_stars"><option ${item.stars.includes('5')?'selected':''}>★★★★★</option><option ${item.stars.includes('4')&&!item.stars.includes('5')?'selected':''}>★★★★☆</option><option ${item.stars.includes('3')&&!item.stars.includes('4')?'selected':''}>★★★☆☆</option></select></div><div class="mfg"><label>Status</label><select id="ef_badge"><option ${item.badge==='Available'?'selected':''}>Available</option><option ${item.badge==='Few Rooms'?'selected':''}>Few Rooms</option><option ${item.badge==='Full'?'selected':''}>Full</option></select></div></div>
+      <div class="mfg"><label>Description</label><textarea id="ef_desc">${item.desc}</textarea></div>
+      <div class="mfg"><label>Tags (comma se)</label><input id="ef_tags" value="${item.tags.join(',')}"></div>
+      <div class="mfg"><label>Room Types (| se alag)</label><textarea id="ef_rooms">${item.rooms}</textarea></div>
+      <div style="background:rgba(127,187,211,.08);border:1px solid rgba(127,187,211,.2);border-radius:9px;padding:13px;margin-top:4px;">
+        <div style="font-family:var(--fd);font-size:15px;color:var(--sky);margin-bottom:9px;">👤 Local Contact Person</div>
+        <div class="mfrow"><div class="mfg"><label>Naam</label><input id="ef_lc_name" value="${item.lc_name}"></div><div class="mfg"><label>Role/Pad</label><input id="ef_lc_role" value="${item.lc_role}"></div></div>
+        <div class="mfg"><label>📞 Mobile Number</label><input id="ef_lc_phone" value="${item.lc_phone}" type="tel"></div>
+      </div>`;
+  } else if(type==='tours') {
+    fields = `
+      ${photoSection}
+      <div class="mfg"><label>Tour Ka Naam</label><input id="ef_name" value="${item.name}"></div>
+      <div class="mfrow"><div class="mfg"><label>Type</label><select id="ef_type"><option ${item.type==='SPIRITUAL'?'selected':''}>SPIRITUAL</option><option ${item.type==='TREKKING'?'selected':''}>TREKKING</option><option ${item.type==='COMBO'?'selected':''}>COMBO</option><option ${item.type==='ADVENTURE'?'selected':''}>ADVENTURE</option></select></div><div class="mfg"><label>Duration</label><input id="ef_dur" value="${item.dur}"></div></div>
+      <div class="mfg"><label>Price ₹/person</label><input id="ef_price" value="${item.price}" type="number"></div>
+      <div class="mfg"><label>Description</label><textarea id="ef_desc">${item.desc}</textarea></div>
+      <div class="mfg"><label>Stops (| se)</label><input id="ef_stops" value="${item.stops}"></div>
+      <div class="mfg"><label>Includes (| se)</label><input id="ef_includes" value="${item.includes}"></div>
+      <div class="mfg"><label>Packages (| se)</label><textarea id="ef_packages">${item.packages}</textarea></div>`;
+  } else if(type==='emergency') {
+    fields = `
+      <div class="mfg"><label>Seva Ka Naam</label><input id="ef_name" value="${item.name}"></div>
+      <div class="mfrow"><div class="mfg"><label>📞 Number</label><input id="ef_num" value="${item.num}"></div><div class="mfg"><label>Type</label><select id="ef_type"><option ${item.type==='national'?'selected':''}>national</option><option ${item.type==='local'?'selected':''}>local</option><option ${item.type==='dharchula'?'selected':''}>dharchula</option></select></div></div>
+      <div class="mfrow"><div class="mfg"><label>Icon (emoji)</label><input id="ef_ico" value="${item.ico}"></div><div class="mfg"><label>Color</label><select id="ef_cls"><option ${item.cls==='red'?'selected':''}>red</option><option ${item.cls==='orange'?'selected':''}>orange</option><option ${item.cls==='blue'?'selected':''}>blue</option><option ${item.cls==='green'?'selected':''}>green</option><option ${item.cls==='purple'?'selected':''}>purple</option></select></div></div>
+      <div class="mfg"><label>Hint</label><input id="ef_hint" value="${item.hint}"></div>`;
+  } else if(type==='foods') {
+    fields = `
+      <div class="mfg"><label>Dish Ka Naam</label><input id="ef_name" value="${item.name}"></div>
+      <div class="mfrow"><div class="mfg"><label>Hindi Naam</label><input id="ef_hindi" value="${item.hindi}"></div><div class="mfg"><label>Type</label><select id="ef_badge"><option ${item.badge==='veg'?'selected':''}>veg</option><option ${item.badge==='sweet'?'selected':''}>sweet</option><option ${item.badge==='drink'?'selected':''}>drink</option></select></div></div>
+      <div class="mfg"><label>Description</label><textarea id="ef_desc">${item.desc}</textarea></div>
+      <div class="mfg"><label>Kahan milega</label><input id="ef_where" value="${item.where}"></div>`;
+  } else if(type==='products') {
+    fields = `
+      <div class="mfg"><label>Product Ka Naam</label><input id="ef_name" value="${item.name}"></div>
+      <div class="mfrow"><div class="mfg"><label>Price Range</label><input id="ef_price" value="${item.price}"></div><div class="mfg"><label>Icon (emoji)</label><input id="ef_ico" value="${item.ico}"></div></div>
+      <div class="mfg"><label>Description</label><textarea id="ef_desc">${item.desc}</textarea></div>
+      <div class="mfg"><label>Kahan milega</label><input id="ef_where" value="${item.where}"></div>
+      <div class="mfg"><label>Tags (comma se)</label><input id="ef_tags" value="${item.tags.join(',')}"></div>`;
+  } else if(type==='attractions') {
+    fields = `
+      <div class="mfg"><label>Jagah Ka Naam</label><input id="ef_name" value="${item.name}"></div>
+      <div class="mfrow"><div class="mfg"><label>Distance</label><input id="ef_dist" value="${item.dist}"></div><div class="mfg"><label>Category</label><select id="ef_cat"><option ${item.cat==='spiritual'?'selected':''}>spiritual</option><option ${item.cat==='trek'?'selected':''}>trek</option><option ${item.cat==='nature'?'selected':''}>nature</option><option ${item.cat==='heritage'?'selected':''}>heritage</option></select></div></div>
+      <div class="mfg"><label>Description</label><textarea id="ef_desc">${item.desc}</textarea></div>`;
+  }
+  document.getElementById('editForm').innerHTML = fields;
+  document.getElementById('editModal').classList.add('on');
+}
+
+function saveEdit() {
+  const {type, id} = currentEdit;
+  const item = data[type].find(x=>x.id===id);
+  if(!item) return;
+  const g = i => { const el=document.getElementById(i); return el?el.value:null; };
+  if(type==='hotels'){item.name=g('ef_name');item.loc=g('ef_loc');item.price=g('ef_price');item.stars=g('ef_stars');item.badge=g('ef_badge');item.badgeCls=item.badge==='Available'?'bg':item.badge==='Few Rooms'?'bo':'br';item.desc=g('ef_desc');item.tags=g('ef_tags').split(',').map(t=>t.trim()).filter(Boolean);item.rooms=g('ef_rooms');item.lc_name=g('ef_lc_name');item.lc_role=g('ef_lc_role');item.lc_phone=g('ef_lc_phone');}
+  else if(type==='tours'){item.name=g('ef_name');item.type=g('ef_type');item.dur=g('ef_dur');item.price=g('ef_price');item.desc=g('ef_desc');item.stops=g('ef_stops');item.includes=g('ef_includes');item.packages=g('ef_packages');}
+  else if(type==='emergency'){item.name=g('ef_name');item.num=g('ef_num');item.type=g('ef_type');item.ico=g('ef_ico');item.cls=g('ef_cls');item.hint=g('ef_hint');}
+  else if(type==='foods'){item.name=g('ef_name');item.hindi=g('ef_hindi');item.badge=g('ef_badge');item.desc=g('ef_desc');item.where=g('ef_where');}
+  else if(type==='products'){item.name=g('ef_name');item.price=g('ef_price');item.ico=g('ef_ico');item.desc=g('ef_desc');item.where=g('ef_where');item.tags=g('ef_tags').split(',').map(t=>t.trim()).filter(Boolean);}
+  else if(type==='attractions'){item.name=g('ef_name');item.dist=g('ef_dist');item.cat=g('ef_cat');item.desc=g('ef_desc');}
+  saveData();
+  closeModal('editModal');
+  renderAll();
+  renderAdmin(type);
+  toast('✅ Save ho gaya!');
+}
+
+function deleteItem(type, id) {
+  if(!confirm('Delete karna chahte hain?')) return;
+  data[type] = data[type].filter(x=>x.id!==id);
+  saveData();renderAll();renderAdmin(type);toast('🗑️ Delete ho gaya');
+}
+
+// ══════════════════════════════════════════
+// ADD NEW ITEM
+// ══════════════════════════════════════════
+function showAddItem() {
+  document.getElementById('addModal').classList.add('on');
+  renderAddForm();
+}
+
+function renderAddForm() {
+  const cat = document.getElementById('addCat').value;
+  let f = '';
+  if(cat==='hotels') f=`<div class="mfg"><label>Hotel Ka Naam</label><input id="nf_name" placeholder="Jaise: Mountain View Hotel"></div><div class="mfrow"><div class="mfg"><label>Location</label><input id="nf_loc" placeholder="Jaise: Munsiyari"></div><div class="mfg"><label>Price ₹/night</label><input id="nf_price" type="number" placeholder="3000"></div></div><div class="mfg"><label>Description</label><textarea id="nf_desc" placeholder="Hotel ke baare mein..."></textarea></div><div class="mfrow"><div class="mfg"><label>Tags (comma se)</label><input id="nf_tags" placeholder="Mountain View,Parking"></div><div class="mfg"><label>Status</label><select id="nf_badge"><option>Available</option><option>Few Rooms</option><option>Full</option></select></div></div><div style="background:rgba(127,187,211,.08);border:1px solid rgba(127,187,211,.2);border-radius:9px;padding:13px;margin-top:4px;"><div style="font-size:13px;color:var(--sky);font-weight:600;margin-bottom:9px;">👤 Local Contact</div><div class="mfrow"><div class="mfg"><label>Naam</label><input id="nf_lc_name" placeholder="Naam"></div><div class="mfg"><label>Role</label><input id="nf_lc_role" placeholder="Manager"></div></div><div class="mfg"><label>📞 Mobile</label><input id="nf_lc_phone" type="tel" placeholder="98XXXXXXXX"></div></div>`;
+  else if(cat==='tours') f=`<div class="mfg"><label>Tour Ka Naam</label><input id="nf_name" placeholder="Jaise: Panchachuli Trek"></div><div class="mfrow"><div class="mfg"><label>Type</label><select id="nf_type"><option>SPIRITUAL</option><option>TREKKING</option><option>COMBO</option><option>ADVENTURE</option></select></div><div class="mfg"><label>Duration</label><input id="nf_dur" placeholder="5 Days/4 Nights"></div></div><div class="mfg"><label>Price ₹/person</label><input id="nf_price" type="number" placeholder="15000"></div><div class="mfg"><label>Description</label><textarea id="nf_desc"></textarea></div><div class="mfg"><label>Stops (| se alag)</label><input id="nf_stops" placeholder="Delhi|Tanakpur|Pithoragarh"></div>`;
+  else if(cat==='emergency') f=`<div class="mfg"><label>Seva Ka Naam</label><input id="nf_name" placeholder="Jaise: Munsiyari Police"></div><div class="mfrow"><div class="mfg"><label>📞 Number</label><input id="nf_num" placeholder="05964-XXXXXX"></div><div class="mfg"><label>Type</label><select id="nf_type"><option>local</option><option>national</option><option>dharchula</option></select></div></div><div class="mfrow"><div class="mfg"><label>Icon</label><input id="nf_ico" placeholder="👮"></div><div class="mfg"><label>Color</label><select id="nf_cls"><option>red</option><option>orange</option><option>blue</option><option>green</option><option>purple</option></select></div></div><div class="mfg"><label>Hint</label><input id="nf_hint" placeholder="24x7 service"></div>`;
+  else if(cat==='attractions') f=`<div class="mfg"><label>Jagah Ka Naam</label><input id="nf_name"></div><div class="mfrow"><div class="mfg"><label>Distance</label><input id="nf_dist" placeholder="50km from Pithoragarh"></div><div class="mfg"><label>Category</label><select id="nf_cat"><option>spiritual</option><option>trek</option><option>nature</option><option>heritage</option></select></div></div><div class="mfg"><label>Description</label><textarea id="nf_desc"></textarea></div>`;
+  else if(cat==='foods') f=`<div class="mfg"><label>Dish Ka Naam</label><input id="nf_name"></div><div class="mfrow"><div class="mfg"><label>Hindi Naam</label><input id="nf_hindi" placeholder="हिंदी नाम"></div><div class="mfg"><label>Type</label><select id="nf_badge"><option>veg</option><option>sweet</option><option>drink</option></select></div></div><div class="mfg"><label>Description</label><textarea id="nf_desc"></textarea></div><div class="mfg"><label>Kahan milega</label><input id="nf_where"></div>`;
+  else if(cat==='products') f=`<div class="mfg"><label>Product Ka Naam</label><input id="nf_name"></div><div class="mfrow"><div class="mfg"><label>Price Range</label><input id="nf_price" placeholder="₹200–₹800"></div><div class="mfg"><label>Icon (emoji)</label><input id="nf_ico" placeholder="🎨"></div></div><div class="mfg"><label>Description</label><textarea id="nf_desc"></textarea></div><div class="mfg"><label>Kahan milega</label><input id="nf_where"></div>`;
+  document.getElementById('addForm').innerHTML = f;
+}
+
+function saveNewItem() {
+  const cat = document.getElementById('addCat').value;
+  const g = i => { const el=document.getElementById(i); return el?el.value.trim():''; };
+  const newId = Math.max(0,...data[cat].map(x=>x.id)) + 1;
+  let newItem = null;
+  if(cat==='hotels') newItem={id:newId,icon:'🏨',name:g('nf_name')||'New Hotel',loc:g('nf_loc'),stars:'★★★☆☆',badge:g('nf_badge')||'Available',badgeCls:'bg',tags:g('nf_tags').split(',').map(t=>t.trim()).filter(Boolean),price:g('nf_price')||'3000',desc:g('nf_desc'),rooms:'Standard|Deluxe',lc_name:g('nf_lc_name'),lc_role:g('nf_lc_role'),lc_phone:g('nf_lc_phone')};
+  else if(cat==='tours') newItem={id:newId,icon:'🗺️',name:g('nf_name')||'New Tour',type:g('nf_type')||'COMBO',dur:g('nf_dur'),desc:g('nf_desc'),stops:g('nf_stops'),includes:'Transport|Guide|Meals',price:g('nf_price')||'10000',packages:'Standard'};
+  else if(cat==='emergency') newItem={id:newId,type:g('nf_type')||'local',cls:g('nf_cls')||'blue',ico:g('nf_ico')||'📞',name:g('nf_name'),num:g('nf_num'),hint:g('nf_hint')};
+  else if(cat==='attractions') newItem={id:newId,icon:'⛰️',name:g('nf_name'),desc:g('nf_desc'),dist:g('nf_dist'),cat:g('nf_cat')||'nature'};
+  else if(cat==='foods') newItem={id:newId,icon:'🍲',cls:'c1',badge:g('nf_badge')||'veg',name:g('nf_name'),hindi:g('nf_hindi'),desc:g('nf_desc'),where:g('nf_where')};
+  else if(cat==='products') newItem={id:newId,ico:g('nf_ico')||'🎁',name:g('nf_name'),desc:g('nf_desc'),price:g('nf_price'),where:g('nf_where'),tags:[]};
+  if(!newItem||!newItem.name){toast('❌ Naam zaroor bharein!');return;}
+  data[cat].push(newItem);
+  saveData();renderAll();renderAdmin(cat);closeModal('addModal');toast('✅ Naya item add ho gaya!');
+}
+
+// ══════════════════════════════════════════
+// BOOKING
+// ══════════════════════════════════════════
+let curBookType='hotel',curBookId=1;
+function openBooking(type, id) {
+  curBookType=type;curBookId=id;
+  document.getElementById('bookStep1').style.display='block';
+  document.getElementById('bookStep2').style.display='none';
+  document.getElementById('bookClothBox').style.display='none';
+  const today=new Date().toISOString().split('T')[0];
+  const tom=new Date(Date.now()+86400000).toISOString().split('T')[0];
+  document.getElementById('bD1').value=today;
+  document.getElementById('bD2').value=tom;
+  if(type==='hotel'){
+    const h=data.hotels.find(x=>x.id===id);
+    document.getElementById('bTitle').textContent='🏨 '+h.name;
+    document.getElementById('d1lbl').textContent='Check-in';document.getElementById('d2lbl').textContent='Check-out';
+    document.getElementById('selLbl').textContent='Room Type';
+    document.getElementById('bSel').innerHTML=h.rooms.split('|').map(r=>`<option>${r}</option>`).join('');
+  } else {
+    const t=data.tours.find(x=>x.id===id);
+    document.getElementById('bTitle').textContent='🗺️ '+t.name;
+    document.getElementById('d1lbl').textContent='Start Date';document.getElementById('d2lbl').textContent='End Date';
+    document.getElementById('selLbl').textContent='Package';
+    document.getElementById('bSel').innerHTML=t.packages.split('|').map(p=>`<option>${p}</option>`).join('');
+  }
+  calcSum();onBookDateChange();
+  document.getElementById('bookModal').classList.add('on');
+}
+
+function calcSum() {
+  const sel=document.getElementById('bSel').value;
+  const d1=document.getElementById('bD1').value;
+  const d2=document.getElementById('bD2').value;
+  const m=sel.match(/₹([\d,]+)/);
+  const base=m?parseInt(m[1].replace(/,/g,'')):0;
+  let nights=1;
+  if(d1&&d2){const diff=(new Date(d2)-new Date(d1))/86400000;nights=diff>0?diff:1;}
+  const sub=base*nights,tax=Math.round(sub*.05),tot=sub+tax;
+  document.getElementById('sItem').textContent=sel.split('–')[0].trim()||'—';
+  document.getElementById('sDates').textContent=(d1&&d2)?`${d1} → ${d2}`:'—';
+  document.getElementById('sNights').textContent=nights+(curBookType==='hotel'?' nights':' days');
+  document.getElementById('sBase').textContent=sub?'₹'+sub.toLocaleString('en-IN'):'—';
+  document.getElementById('sTax').textContent=tax?'₹'+tax.toLocaleString('en-IN'):'—';
+  document.getElementById('sTotal').textContent=tot?'₹'+tot.toLocaleString('en-IN'):'—';
+}
+
+function confirmBook() {
+  const name=document.getElementById('bName').value.trim();
+  if(!name){toast('❌ Naam zaroor bharein!');return;}
+  const ref='DH'+Math.random().toString(36).substr(2,7).toUpperCase();
+  document.getElementById('bRef').textContent=ref;
+  const h=curBookType==='hotel'?data.hotels.find(x=>x.id===curBookId):null;
+  if(h){
+    document.getElementById('bookLocalContact').innerHTML=`<div style="font-size:12px;color:var(--sky);font-weight:600;margin-bottom:7px;">📞 Local Contact Save Karein!</div><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;"><div><div style="font-size:13px;font-weight:600;">${h.lc_name}</div><div style="font-size:11px;color:var(--mist);">${h.lc_role}</div></div><div style="text-align:right;"><div style="font-family:monospace;font-size:15px;color:var(--sky);font-weight:700;">${h.lc_phone}</div><a href="tel:${h.lc_phone}" class="lc-call" style="display:inline-block;margin-top:4px;">📞 Call</a></div></div>`;
+  } else document.getElementById('bookLocalContact').style.display='none';
+  document.getElementById('bookStep1').style.display='none';
+  document.getElementById('bookStep2').style.display='block';
+  toast('🎉 Booking confirmed! Ref: '+ref);
+}
+
+function selPay(btn,type){document.querySelectorAll('.ptabs .ptab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');['card','upi','nb'].forEach(t=>document.getElementById('pay-'+t).style.display='none');document.getElementById('pay-'+type).style.display='block';}
+
+// ══════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════
+function goPage(id) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.getElementById('page-'+id).classList.add('on');
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b=>{if(b.onclick&&b.onclick.toString().includes("'"+id+"'"))b.classList.add('on');});
+  if(id==='admin') renderAdmin('hotels');
+  if(id==='emergency') renderEmergency();
+  if(id==='routes') renderRoutes();
+}
+
+function lgTab(panel,btn){document.querySelectorAll('.lgtabs .lgt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');const parent=btn.closest('.page')||document;parent.querySelectorAll('.lgp').forEach(p=>p.classList.remove('on'));document.getElementById('panel-'+panel).classList.add('on');}
+function closeModal(id){document.getElementById(id).classList.remove('on');}
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),3200);}
+
+document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('on');}));
+
+// INIT
+function renderAll(){renderHotels();renderTours();renderAttrList(data.attractions);renderFoods();renderProducts();}
+document.getElementById('wDateIn').value=new Date().toISOString().split('T')[0];
+document.getElementById('wDateOut').value=new Date(Date.now()+86400000).toISOString().split('T')[0];
+renderAll();
+updateWeather();
+</script>
+</body>
+</html>
